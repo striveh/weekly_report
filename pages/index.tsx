@@ -86,19 +86,19 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
+    <div className="flex flex-col items-center justify-center max-w-5xl min-h-screen py-2 mx-auto">
       <Head>
         <title>{t('title')}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20">
+      <main className="flex flex-col items-center justify-center flex-1 w-full px-4 mt-12 text-center sm:mt-20">
         
 
 
       <a
-          className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-600 shadow-md transition-colors hover:bg-gray-100 mb-5"
+          className="flex items-center justify-center px-4 py-2 mb-5 space-x-2 text-sm text-gray-600 transition-colors bg-white border border-gray-300 rounded-full shadow-md max-w-fit hover:bg-gray-100"
           href="https://github.com/guaguaguaxia/weekly_report"
           target="_blank"
           rel="noopener noreferrer"
@@ -109,44 +109,19 @@ const Home: NextPage = () => {
 
 
 
-        <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900">
-          {t('description1')} <br></br><div               className=" px-4 py-2 sm:mt-3 mt-8 hover:bg-black/80 w-full"></div>{t('description2')}
+        <h1 className="max-w-2xl text-4xl font-bold sm:text-6xl text-slate-900">
+          {t('description1')} <br></br><div               className="w-full px-4 py-2 mt-8  sm:mt-3 hover:bg-black/80"></div>{t('description2')}
         </h1>
-        <p className="text-slate-500 mt-5">{t('slogan')}</p>
+        <p className="mt-5 text-slate-500">{t('slogan')}</p>
 
-        <p className="text-slate-1000 mt-5 sm:text-2xl" >
-          此功能于2023-02-15 00:00:00暂时下线<br></br>
-        <br></br>
-        </p>
-        <p className="text-slate-1000 mt-5 " style={{textAlign: "left"}}>
-
-        1.为什么这么匆忙下线？<br></br>
-        ①.由于此网站的使用人数以不可思议的速度飙升，作者无力承担随之而来的运营成本。②.产品存在合规风险，个人开发者无力应对审查机制。<br></br>
-        <br></br>
-        2.为什么不做商业化？我可以给钱<br></br>
-        如果我平时就抱着赚钱的心态、寻找着赚钱的方法，那这款产品也大概率不会诞生。我是纯粹以好玩的角度出发而产生的灵感，本来就是想着人不会太多随便玩玩。
-        这个项目没有技术门槛，代码都是开源的，做商业化不仅麻烦且很快就会有同质产品，赚不了多少钱。<br></br>
-        <br></br>
-        3.既然是暂时下线，那什么时候回来？<br></br>
-        什么时候国内有类ChatGPT能力的产品、且API价格可以接受就什么时候回来，百度称百度版ChatGPT“文心一言”三月份正式推出，不过那时候此产品可能也将失去意义。<br></br>
-        <br></br>
-        4.我迫切需要这个功能，你有什么办法能让我用上吗？<br></br>
-        想办法搞个ChatGPT账号自己问。<br></br>
-        <br></br>
-        5.你这么好给我们免费用了这么多天，我要怎么回报你？ (我有一个朋友，他就是这么问我的，真的，不骗你！）<br></br>
-        在GitHub上Star此项目、在GitHub上follow我就是对我最大的支持。<br></br>
-        <br></br>
-        还有什么想说想问的都可以通过邮箱guaguaguaxia@Gmail.com联系我，我会一一回复
-        </p>
-
-        <div className="max-w-xl w-full">
+        <div className="w-full max-w-xl">
           { useUserKey &&(
             <>
 
               <input
                   value={api_key}
                   onChange={(e) => setAPIKey(e.target.value)}
-                  className="w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-black focus:ring-black p-2"
+                  className="w-full p-2 border-2 border-gray-300 rounded-md shadow-sm focus:border-black focus:ring-black"
                   placeholder={
                     t('openaiApiKeyPlaceholder')
                   }
@@ -154,7 +129,7 @@ const Home: NextPage = () => {
             </>)
           }
 
-          <div className="flex mt-10 items-center space-x-3">
+          <div className="flex items-center mt-10 space-x-3">
             <Image
               src="/1-black.png"
               width={30}
@@ -162,7 +137,7 @@ const Home: NextPage = () => {
               alt="1 icon"
               className="mb-5 xs:mb-0"
             />
-            <p className="text-left font-medium">
+            <p className="font-medium text-left">
               {t('step1')}{" "}
             </p>
           </div>
@@ -171,7 +146,7 @@ const Home: NextPage = () => {
             value={chat}
             onChange={(e) => setChat(e.target.value)}
             rows={4}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-2"
+            className="w-full my-2 border-gray-300 rounded-md shadow-sm focus:border-black focus:ring-black"
             placeholder={
               t('placeholder')
             }
@@ -179,16 +154,24 @@ const Home: NextPage = () => {
 
           {!loading && (
             <button
-              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-5 mt-8 hover:bg-black/80 w-full"
-              
+              className="w-full px-4 py-2 mt-8 font-medium text-white bg-black rounded-xl sm:mt-5 hover:bg-black/80"
+              onClick={(e) => generateChat(e)}
             >
               {t('simplifierButton')} &rarr;
+            </button>
+          )}
+          {loading && (
+            <button
+              className="w-full px-4 py-2 mt-8 font-medium text-white bg-black rounded-xl sm:mt-10 hover:bg-black/80"
+              disabled
+            >
+              <LoadingDots color="white" style="large" />
             </button>
           )}
           
           <br></br>
           <br></br>
-          <div className="mt-1 items-center space-x-3">
+          <div className="items-center mt-1 space-x-3">
             <span className="text-slate-200">
                 {t('privacyPolicy1')}
               <a
@@ -208,17 +191,17 @@ const Home: NextPage = () => {
         <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
         <ResizablePanel>
           <AnimatePresence mode="wait">
-            <motion.div className="space-y-10 my-10">
+            <motion.div className="my-10 space-y-10">
               {generatedChat && (
                 <>
                   <div>
-                    <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto">
+                    <h2 className="mx-auto text-3xl font-bold sm:text-4xl text-slate-900">
                       {t('simplifiedContent')}
                     </h2>
                   </div>
-                  <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
+                  <div className="flex flex-col items-center justify-center max-w-xl mx-auto space-y-8">
                     <div
-                      className="bg-white rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border"
+                      className="p-4 transition bg-white border shadow-md rounded-xl hover:bg-gray-100 cursor-copy"
                       onClick={() => {
                         navigator.clipboard.writeText(generatedChat.trim());
                         toast("Chat copied to clipboard", {
